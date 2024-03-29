@@ -15,7 +15,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('invoice_number');
             $table->float('price', 10)->nullable();
-            $table->boolean('is_editable');
+            $table->boolean('is_editable')->default(true);
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->float('paid_amount');
