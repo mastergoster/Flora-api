@@ -6,14 +6,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, HasUuids;
+    use HasFactory, Notifiable, HasUuids, HasRoles;
 
     protected $fillable = [
         'id',
@@ -68,19 +68,8 @@ class User extends Authenticatable
      */
     public function messages(): HasMany
     {
-        return $this->hasMany(Message::class)
-            ->where('user_id', $this->id)
-            ->orWhereIn('role_id', $this->roles->pluck('id'))
-            ->get();
-    }
-
-    /**
-     * The roles that belong to the user.
-     *
-     * @return BelongsToMany
-     */
-    public function roles(): BelongsToMany
-    {
-        return $this->belongsToMany(Role::class);
+        return $this->hasMany(Message::class, 'to_user_id')
+            ->where('to_user_id', $this->id)
+            ->orWhereIn('to_role_id', $this->roles->pluck('id'));
     }
 }
