@@ -9,4 +9,17 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory, HasUuids;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'reference',
+        'name',
+        'description',
+        'price',
+        'is_enabled',
+    ];
 }
