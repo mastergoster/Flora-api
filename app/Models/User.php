@@ -23,4 +23,11 @@ class User extends Authenticatable
         'last_name',
         'email',
     ];
+
+    //TODO Ajouter relation avec les factures
+    //TODO Ajouter relation avec les messages
+    //TODO Ajouter relation avec les roles
+
+    //TODO Ajouter toutes les factures NON editables de l'utilisateur
+    //TODO Ajouter scope pour récupérer les messages accessibles par l'utilisateur
 }

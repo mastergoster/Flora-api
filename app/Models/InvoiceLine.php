@@ -9,4 +9,6 @@ use Illuminate\Database\Eloquent\Model;
 class InvoiceLine extends Model
 {
     use HasFactory, HasUuids;
+
+    //TODO ajouter relation avec produits
 }
