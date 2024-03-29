@@ -13,14 +13,12 @@ return new class extends Migration
     {
         Schema::create('reservable_items', function (Blueprint $table) {
             $table->id();
-            // TODO: Verifier nommage des colonnes
             $table->string('name', 255);
-            $table->text('description');
-            $table->integer('nombre_place')->nullable();
             $table->string('slug', 255);
-            $table->unsignedBigInteger('id_images')->nullable();
-            $table->foreign('id_images')->references('id')->on('images')->onDelete('SET NULL')->onUpdate('NO ACTION');
-            $table->string('color', 255)->nullable();
+            $table->string('type', 255);
+            $table->text('description');
+            $table->unsignedBigInteger('image_path')->nullable();
+            $table->json('configuration')->nullable();
             $table->timestamps();
         });
     }

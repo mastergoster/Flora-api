@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('booking_slots', function (Blueprint $table) {
             $table->id();
-            // TODO: Vérifier nommage des colonnes
             $table->timestamp('start_at');
             $table->timestamp('end_at');
             $table->unsignedBigInteger('user_id');

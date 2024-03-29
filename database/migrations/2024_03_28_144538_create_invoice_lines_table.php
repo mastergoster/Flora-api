@@ -13,17 +13,17 @@ return new class extends Migration
     {
         Schema::create('invoice_lines', function (Blueprint $table) {
             $table->id();
-            // TODO: Verifier nommage des colonnes
+            // TODO: Passer au UUID
             $table->unsignedBigInteger('invoice_id');
             $table->foreign('invoice_id')->references('id')->on('invoices');
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products');
-            $table->string('ref');
+            $table->string('reference');
             $table->string('name');
-            $table->text('desc')->nullable();
+            $table->text('description')->nullable();
             $table->float('price', 10);
-            $table->integer('qte');
             $table->float('discount', 10);
+            $table->integer('quanitity');
             $table->timestamps();
         });
     }

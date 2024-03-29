@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('attendance_logs', function (Blueprint $table) {
             $table->id();
-            // TODO: Vérifier nommage des colonnes
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->uuid('reservable_items_id')->nullable();
+            $table->foreign('reservable_items_id')->references('id')->on('reservable_items');
             $table->timestamps();
         });
     }

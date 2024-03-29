@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            // TODO: Verifier nommage des colonnes
-            $table->string('ref');
+            // TODO: Ajouter UUID
+            $table->string('reference');
             $table->string('name');
-            $table->text('desc')->nullable();
+            $table->text('description')->nullable();
             $table->decimal('price', 8, 2);
-            $table->boolean('activate')->default(false);
+            $table->boolean('is_enabled')->default(false);
             $table->timestamps();
         });
     }

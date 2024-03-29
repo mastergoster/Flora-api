@@ -13,16 +13,15 @@ return new class extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
-            // TODO: Verifier nommage des colonnes
-            // TODO: Ajouter paid_amount
-            $table->string('ref');
-            $table->unsignedBigInteger('id_users');
-            $table->foreign('id_users')->references('id')->on('users');
+            // TODO: Passer au UUID
+            $table->string('invoice_number');
             $table->float('price', 10)->nullable();
-            $table->string('paiement');
-            $table->boolean('activate');
-            $table->timestamp('date_at')->nullable();
-            $table->string('ref_stripe_token')->nullable();
+            $table->boolean('is_editable');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->float('paid_amount');
+            $table->string('stripe_id')->nullable();
+            $table->timestamp('issued_at')->nullable();
             $table->timestamps();
         });
     }

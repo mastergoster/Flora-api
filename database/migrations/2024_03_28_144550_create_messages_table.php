@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            // TODO: Verifier nommage des colonnes
+            // TODO: Passer au UUID
             $table->string('name');
             $table->string('email');
             $table->text('message');
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->unsignedBigInteger('role_id')->nullable();
-            $table->foreign('role_id')->references('id')->on('roles');
+            $table->unsignedBigInteger('to_user_id')->nullable();
+            $table->foreign('to_user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('to_role_id')->nullable();
+            $table->foreign('to_role_id')->references('id')->on('roles');
             $table->timestamps();
         });
     }
