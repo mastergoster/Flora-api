@@ -22,7 +22,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->float('price', 10);
             $table->float('discount', 10);
-            $table->integer('quanitity');
+            $table->integer('quantity');
             $table->timestamps();
         });
     }
