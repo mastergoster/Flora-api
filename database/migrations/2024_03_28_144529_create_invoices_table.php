@@ -12,8 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('invoices', function (Blueprint $table) {
-            $table->id();
-            // TODO: Passer au UUID
+            $table->uuid('id')->primary();
             $table->string('invoice_number');
             $table->float('price', 10)->nullable();
             $table->boolean('is_editable');

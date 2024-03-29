@@ -12,8 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('invoice_lines', function (Blueprint $table) {
-            $table->id();
-            // TODO: Passer au UUID
+            $table->uuid('id')->primary();
             $table->unsignedBigInteger('invoice_id');
             $table->foreign('invoice_id')->references('id')->on('invoices');
             $table->unsignedBigInteger('product_id');
